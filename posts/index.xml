@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>暴力熊的进阶笔记</title>
-    <link>http://example.org/</link>
-    <description>Recent content on 暴力熊的进阶笔记</description>
+    <title>Posts on 暴力熊的进阶笔记</title>
+    <link>http://example.org/posts/</link>
+    <description>Recent content in Posts on 暴力熊的进阶笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Thu, 14 Oct 2021 16:42:27 +0800</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Oct 2021 16:42:27 +0800</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>简介</title>
       <link>http://example.org/posts/%E6%9C%89%E5%85%B3getter%E5%92%8Csetter%E7%9A%84%E7%94%A8%E6%B3%95/</link>
