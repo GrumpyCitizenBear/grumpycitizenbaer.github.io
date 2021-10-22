@@ -6,7 +6,17 @@
     <description>Recent content on 暴力熊的进阶笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Thu, 21 Oct 2021 10:42:06 +0800</lastBuildDate><atom:link href="http://grumpycitizenbear.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Oct 2021 21:29:50 +0800</lastBuildDate><atom:link href="http://grumpycitizenbear.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Collection体系原理</title>
+      <link>http://grumpycitizenbear.top/posts/collection%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Thu, 21 Oct 2021 21:29:50 +0800</pubDate>
+      
+      <guid>http://grumpycitizenbear.top/posts/collection%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/</guid>
+      <description>Collection 体系原理 一、体系简介 1.为什么要有集合？  数组不能实现动态扩容 数组不便于添加、修改、删除 数组可以储存重复元素  2.Collection接口主要有两种子类型集合：List、Set  Collection接口储存一组不唯一，无序的对象 List接口储存一组不唯一，有序（插入顺序）的对象 Set接口储存一组唯一，无序的对象 Map接口储存一组键值对象，提供key和value的映射  二、List 1.ArrayList：本质上就是一个数组 2.动态扩容的实现方式 创建一个更大的空间，把原先所有的元素拷贝过去
+private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity = elementData.length; int newCapacity = oldCapacity + (oldCapacity &amp;gt;&amp;gt; 1); if (newCapacity - minCapacity &amp;lt; 0) newCapacity = minCapacity; if (newCapacity - MAX_ARRAY_SIZE &amp;gt; 0) newCapacity = hugeCapacity(minCapacity); // minCapacity is usually close to size, so this is a win:  elementData = Arrays.</description>
+    </item>
+    
     <item>
       <title>Maven包管理的一些见解和总结</title>
       <link>http://grumpycitizenbear.top/posts/maven%E5%8C%85%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A7%81%E8%A7%A3%E5%92%8C%E6%80%BB%E7%BB%93/</link>
