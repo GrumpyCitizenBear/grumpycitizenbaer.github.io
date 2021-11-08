@@ -8,11 +8,11 @@
     <language>zh-Hans</language>
     <lastBuildDate>Wed, 03 Nov 2021 10:23:05 +0800</lastBuildDate><atom:link href="http://grumpycitizenbear.top/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>多线程与并发</title>
-      <link>http://grumpycitizenbear.top/posts/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/</link>
+      <title>java-multithreading</title>
+      <link>http://grumpycitizenbear.top/posts/java-multithreading/</link>
       <pubDate>Wed, 03 Nov 2021 10:23:05 +0800</pubDate>
       
-      <guid>http://grumpycitizenbear.top/posts/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/</guid>
+      <guid>http://grumpycitizenbear.top/posts/java-multithreading/</guid>
       <description>多线程与并发 线程与进程 进程：一个进程包括由操作系统分配的内存空间，包含一个或多个线程。一个进程一直运行，知道所有的非守护线程都结束运行后才结束。
 线程：一条线程指的是进程中一个单一顺序的控制流，一个进程可以并发多个线程，每条线程并行执行不同的任务。一个线程不能独立存在，它必须是进程的一部分。
 为什么需要多线程  cpu的计算速度很快  可以看一下这篇文章《我是一个CPU：这个世界慢！死！了！》
