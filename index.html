@@ -31,14 +31,14 @@
       
     
     
-    <meta property="og:title" content="暴力熊的进阶笔记" />
+    <meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://grumpycitizenbear.top/" />
 
-<meta itemprop="name" content="暴力熊的进阶笔记">
+<meta itemprop="name" content="">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="暴力熊的进阶笔记"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content=""/>
 
 	
@@ -156,6 +156,55 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" class="color-inherit dim link">
+            HTML常用标签
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          HTML常用标签 MDN官网
+一、所有标签都有的属性  标记 class 格式 style 使元素被编辑 contenteditable 让一个东西看不到 hidden id 在html中是唯一的，可以作为链接锚，通过js或者css改变样式 控制tab键的顺序 tabindex 显示完整内容 title  二、章节标签  标题 h1-h6 章节 section 文章 article 段落 p 头部 header 脚步 footer 主要内容 main 旁支内容 aside 划分 div  三、内容标签  ol+li ul+li dl+dt+dd pre 保留空格回车tab code 代码 hr 分割线 br 换行 a 链接  1.href （1）超链接 （2）href的取值 网址 路径 伪协议（javascript：代码；、mailto：邮箱、tel：电话） id 2.target （1）_blank 在空白页面打开 （2）_self 在当前页面打开 （3）_top 在顶部打开页面 （4）_parent 在父页面打开页面 （5）程序猿的命名 固定窗口xxx（windows的name、iframe的name） 3.
+        </div>
+          <a href="/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/" class="color-inherit dim link">
+            basic steps of web crawler
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          网络爬虫的基本步骤  
+        </div>
+          <a href="/posts/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/java-multithreading/" class="color-inherit dim link">
             java-multithreading
             </a>
@@ -187,77 +236,24 @@ Java的执行模式是同步/阻塞（block）的    同步、异步：针对客
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/collection%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" class="color-inherit dim link">
-            Collection体系原理
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          Collection 体系原理 一、体系简介 1.为什么要有集合？  数组不能实现动态扩容 数组不便于添加、修改、删除 数组可以储存重复元素  2.Collection接口主要有两种子类型集合：List、Set  Collection接口储存一组不唯一，无序的对象 List接口储存一组不唯一，有序（插入顺序）的对象 Set接口储存一组唯一，无序的对象 Map接口储存一组键值对象，提供key和value的映射  二、List 1.ArrayList：本质上就是一个数组 2.动态扩容的实现方式 创建一个更大的空间，把原先所有的元素拷贝过去
-private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity = elementData.length; int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1); if (newCapacity - minCapacity &lt; 0) newCapacity = minCapacity; if (newCapacity - MAX_ARRAY_SIZE &gt; 0) newCapacity = hugeCapacity(minCapacity); // minCapacity is usually close to size, so this is a win:  elementData = Arrays.
-        </div>
-          <a href="/posts/collection%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/maven%E5%8C%85%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A7%81%E8%A7%A3%E5%92%8C%E6%80%BB%E7%BB%93/" class="color-inherit dim link">
-            Maven包管理的一些见解和总结
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          Java的包管理与maven 一、什么是包？ 1.如果要知道什么是包，那么首先要了解一下JVM的工作模式 其实很简单，只需要两步：
-  执行一个类的字节码
-  假如在这个过程中碰到了新的类，加载它
-1、2步循环执行，直到完成整个程序
-  2.同时我们还要知道在哪里可以找到类？ classpath类路径
-类的权限定类名（目录层级）唯一确定了一个类
-3.包就是把许多类放在一起打的压缩包 通常以.jar扩展名结尾，也可以手动改为zip
-4.传递性依赖 通俗的说，就是你的程序依赖的类还依赖了别的类
-产生的问题：
- 如果classpath中有重名的类，会优先使用排在前面的类 这样会导致程序在未来的某一天因为改变了classpath而出现bug  引申出包管理➡️
-二、什么是包管理 你要使用一些第三方的类，需要告诉JVM去哪里找
-包管理的本质就是告诉JVM如何找到所需的第三方类库，以及成功解决其中的冲突问题
-三、包管理的发展历史 1.Apache Ant  手动下载jar包，放在一个目录中 写XML配置，指定编译的源代码目录、依赖的jar包、输出目录等 缺点  每个人都要造自己的轮子 第三方类库需要手动下载（如果依赖了10000个。。。。） 没有解决包冲突问题    2.Maven 四、maven包管理 maven远不止包管理工具
-1.maven的仓库   maven的中央仓库 按照一定的约定储存包
-  maven的本地仓库 默认位置 ～/.m2
-  2.maven的编号  groupid artifactid version  maven的包按照约定为所有的包编号，方便检索
-3.maven的传递性依赖自动管理 原则：决不允许出现同名不同版本号的jar包 解决方案：1.选择离项目最近的 2.如果距离相同，选择版本号靠前的 4.会产生包冲突 举个例子 我的项目➡️A➡️B➡️C(2.
-        </div>
-          <a href="/posts/maven%E5%8C%85%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A7%81%E8%A7%A3%E5%92%8C%E6%80%BB%E7%BB%93/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/collection%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" class="link black dim">
+              Collection体系原理
+            </a>
+          </h2>
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/maven%E5%8C%85%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A7%81%E8%A7%A3%E5%92%8C%E6%80%BB%E7%BB%93/" class="link black dim">
+              Maven包管理的一些见解和总结
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/%E6%9C%89%E5%85%B3getter%E5%92%8Csetter%E7%9A%84%E7%94%A8%E6%B3%95/" class="link black dim">
