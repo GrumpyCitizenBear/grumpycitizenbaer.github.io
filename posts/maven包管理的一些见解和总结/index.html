@@ -23,7 +23,7 @@
   maven的本地仓库 默认位置 ～/.m2
   2.maven的编号  groupid artifactid version  maven的包按照约定为所有的包编号，方便检索
 3.maven的传递性依赖自动管理 原则：决不允许出现同名不同版本号的jar包 解决方案：1.选择离项目最近的 2.如果距离相同，选择版本号靠前的 4.会产生包冲突 举个例子 我的项目➡️A➡️B➡️C(2.">
-    <meta name="generator" content="Hugo 0.88.1" />
+    <meta name="generator" content="Hugo 0.97.3" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -333,13 +333,13 @@ mvn dependency -Dincludes=
 <li>直接在pom.xml中引用需要的版本</li>
 <li>强行解除依赖</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;exclusions&gt;</span>
-    <span style="color:#f92672">&lt;exclusion&gt;</span>
-        <span style="color:#f92672">&lt;groupId&gt;</span>sample.ProjectC<span style="color:#f92672">&lt;/groupId&gt;</span>
-          <span style="color:#f92672">&lt;artifactId&gt;</span>Project-C<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;exclusion&gt;</span>
-<span style="color:#f92672">&lt;exclusions&gt;</span>
-</code></pre></div><h2 id="五maven的其他知识">五、maven的其他知识</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;exclusions&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;exclusion&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>sample.ProjectC<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;artifactId&gt;</span>Project-C<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;exclusion&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;exclusions&gt;</span>
+</span></span></code></pre></div><h2 id="五maven的其他知识">五、maven的其他知识</h2>
 <h3 id="1scope">1.scope</h3>
 <p>包的作用域，隔离第三方依赖</p>
 <ul>
@@ -372,7 +372,7 @@ mvn dependency -Dincludes=
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://grumpycitizenbear.top/" >
-    &copy;  暴力熊的进阶笔记 2021 
+    &copy;  暴力熊的进阶笔记 2022 
   </a>
     <div>
 

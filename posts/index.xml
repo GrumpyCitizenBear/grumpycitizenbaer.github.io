@@ -6,7 +6,31 @@
     <description>Recent content in Posts on 暴力熊的进阶笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Fri, 26 Nov 2021 15:23:42 +0800</lastBuildDate><atom:link href="http://grumpycitizenbear.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2022 22:13:08 +0800</lastBuildDate><atom:link href="http://grumpycitizenbear.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MD5信息摘要算法学习笔记</title>
+      <link>http://grumpycitizenbear.top/posts/md5%E4%BF%A1%E6%81%AF%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 20 May 2022 22:13:08 +0800</pubDate>
+      
+      <guid>http://grumpycitizenbear.top/posts/md5%E4%BF%A1%E6%81%AF%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>MD5算法为何不再安全 引出 你现在要从一个非官方网站下载一个程序，你怎么证明下载的内容与官方网站的相同呢？又比如，当我们登陆账户时，账户密码都保存在远端服务器的数据库中，我们如何能保证账户的密码不会被公司内部人员偷窥呢？这时MD5就是一个很好的选择。
+MD5（Message-Digest Algorithm 5），信息摘要算法，1992年由美国密码学家罗纳德李维斯特首次公开发布。可以把MD5看成一个转换器，我们可以任意的字符串，图片，文件甚至是程序转换成128bit的一串MD5值。它是典型的哈希函数，把任意长度的内容映射成固定的散列值。例如将”This is E2 team”放进去会得到”3E1D7861A4ACF267C55673220448CF35”，而将”This is E2 team!”放进去则会得到”57BFE56405F1EBBC07C038FF2FC9225C”。虽然只相差一个感叹号，但是得到的MD5值却大不相同。对于上述第一个应用场景，官网通常会给出程序的MD5值，我们只需要和非官方网站的MD5值相对比，如果二者相同，则说明程序没有问题。对于第二个场景，数据库通常会储存密码的MD5值。
+原理 那我们为什么说MD5不再安全呢？我们需要首先从MD5的原理说起。
+MD5生成散列值的算法大体分为三步：填充对齐、分块、多轮压缩。 第一步填充对齐中，计算机的内容都是0和1的二进制数，我们假定下面是我们输入的内容。他一共有715bit，我们需要将内容补齐为512的整数倍，这里需要补309bit的数据，使它成为1024bit。然后在补齐的内容中，最后64位用来表示原始数据的大小，中间剩下的内容第一个填1，剩下一个全部填0。
+补齐后进行第二步分块，我们要把填充补齐的数据分割成若干个512bit的数据块。
+然后进行最后一步多轮压缩。MD5最终生成的是128bit的散列值，作者将它分为4个部分，并将每个部分都设置一个特殊的不定的初始值。然后从第一个大块开始，用初始的4个值分别对每一块数据进行四轮与或非以及循环位移的位操作，经过16次运算后生成一个新的散列值。对于其他的数据块也是相同的操作，唯一的不同是使用的初始值为上一块的运算结果。最终我们会将1024bit的数据压缩为128bit的MD5值。
+三种安全特性 现在我们已经知道了MD5的原理，可以解释MD5为何不再安全了。MD5是产生消息摘要的散列函数而并非加密算法，所以对MD5的攻击并不是用MD5值反推明文的内容，这是无法做到的，宏观上违反了信息论，微观上每次的压缩都会对数据造成损失。对于MD5的攻击一共分为三种：
+原像攻击： MD5值最多有2128种，而它对应的是无穷多个内容，这样我们不难推出，一个MD5值会对应无穷个明文，只不过我们无法主动用MD5值反向推出任意一个产生出它的明文，抗原像攻击是人们对MD5的第一个基本安全要求，到目前为止没有可行的方案。
+第二原像攻击： 给定一个明文，找到另外一个与它MD5值相同的明文，抗第二原像攻击是人们对MD5的第二个基本安全要求，到目前为止也没有有效的方案。
+碰撞攻击： 这是让MD5安全性崩盘的真正原因，不指定明文和MD5值，只要有方法能够找到两个MD5值相同的消息就算成功。2004年，中国山东大学的王小云团队找到了快速发现大量MD5真碰撞的方法。大体方法是找到局部碰撞，然后找到差分路径，再利用消息修改技术最后得到能产生碰撞的消息对。最终在15分钟到1小时内找到了碰撞对，但生成的而内容是可以构造出来的，大多都是乱码。
+在后续的研究中，2007年，埃因霍芬理工大学的Marc Steven提供了两项新的研究，第一项研究是用一个内容产生另外两个MD5值相同，但内容不一样的消息。更重要的是生成的内容有意义，他还同时发布了一个叫Fastcoll的软件，软件可以用一张图片生成另外两张看起来相同，MD5值也相同的图片，但是他们的源码中结尾的内容会有偏差，这被称为相同前缀碰撞。
+在保证前缀数据保留内容本身意义的前提下，构造后缀数据，使得MD5值相同，这就非常危险了，如果用可执行程序作为前缀，攻击者就可以绕过审核发布恶意的钓鱼软件，只要让程序在内部做一个判断跳转到恶意软件内即可。
+但是杀毒软件还是有能力发现文件的可疑之处，如果能生成两个完全不同的软件，一个清白，一个坏事做尽，但他们的MD5值却一样，这就是他的第二项研究成果，生成两个MD5一样，前缀内容也不相同的文件，称之为选择前缀碰撞，作者本人提供的例子中有两个MD5值相同，但一个输出Hello World，另一个循环输出Goodbye World的程序。
+这让我们对MD5的安全性产生极大的怀疑。选择前缀碰撞还对数字签名产生巨大的威胁，我给一个人开一张1000$的数字支票，用MD5做数字签名的摘要算法来验证数字支票的真伪，那我完全可以在一开始的时候生成两个MD5值相同的数字支票，一个金额1000$，一个金额10$，把1000$的给别人，然后用10$的来抵赖。
+写在最后 MD5的安全性虽然已经被突破，但是在某些应用场景中任然可以起到关键作用，如刚开始举的两个例子就不会被威胁到安全性。也就是说属于原像攻击和第二原像攻击的范围还可以使用MD5。我们还可以使用更加安全的SHA-1算法保证万无一失。
+参考网站：https://www.win.tue.nl/hashclash/</description>
+    </item>
+    
     <item>
       <title>HTML常用标签</title>
       <link>http://grumpycitizenbear.top/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</link>
@@ -19,11 +43,11 @@
     
     <item>
       <title>basic steps of web crawler</title>
-      <link>http://grumpycitizenbear.top/posts/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/</link>
+      <link>http://grumpycitizenbear.top/posts/%E6%B5%85%E6%9E%90url/</link>
       <pubDate>Wed, 10 Nov 2021 20:18:12 +0800</pubDate>
       
-      <guid>http://grumpycitizenbear.top/posts/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/</guid>
-      <description>网络爬虫的基本步骤  </description>
+      <guid>http://grumpycitizenbear.top/posts/%E6%B5%85%E6%9E%90url/</guid>
+      <description>浅析URL url包括哪些部分  url=协议+域名或IP+端口+路径+查询参数+锚点   协议 域名或IP 端口 路径 查询参数 锚点  DNS的作用是什么  域名系统 (Domain Name System) 靠它把你要访问的网址找到然后把信息送到你电脑上  IP的作用是什么 域名是什么 </description>
     </item>
     
     <item>
@@ -57,7 +81,7 @@ Java的执行模式是同步/阻塞（block）的    同步、异步：针对客
       
       <guid>http://grumpycitizenbear.top/posts/collection%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/</guid>
       <description>Collection 体系原理 一、体系简介 1.为什么要有集合？  数组不能实现动态扩容 数组不便于添加、修改、删除 数组可以储存重复元素  2.Collection接口主要有两种子类型集合：List、Set  Collection接口储存一组不唯一，无序的对象 List接口储存一组不唯一，有序（插入顺序）的对象 Set接口储存一组唯一，无序的对象 Map接口储存一组键值对象，提供key和value的映射  二、List 1.ArrayList：本质上就是一个数组 2.动态扩容的实现方式 创建一个更大的空间，把原先所有的元素拷贝过去
-private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity = elementData.length; int newCapacity = oldCapacity + (oldCapacity &amp;gt;&amp;gt; 1); if (newCapacity - minCapacity &amp;lt; 0) newCapacity = minCapacity; if (newCapacity - MAX_ARRAY_SIZE &amp;gt; 0) newCapacity = hugeCapacity(minCapacity); // minCapacity is usually close to size, so this is a win:  elementData = Arrays.</description>
+private void grow(int minCapacity) {  // overflow-conscious code  int oldCapacity = elementData.length;  int newCapacity = oldCapacity + (oldCapacity &amp;gt;&amp;gt; 1);  if (newCapacity - minCapacity &amp;lt; 0)  newCapacity = minCapacity;  if (newCapacity - MAX_ARRAY_SIZE &amp;gt; 0)  newCapacity = hugeCapacity(minCapacity);  // minCapacity is usually close to size, so this is a win:  elementData = Arrays.</description>
     </item>
     
     <item>

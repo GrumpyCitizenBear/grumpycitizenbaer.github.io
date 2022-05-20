@@ -7,8 +7,8 @@
     <title>Collection体系原理 | 暴力熊的进阶笔记</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Collection 体系原理 一、体系简介 1.为什么要有集合？  数组不能实现动态扩容 数组不便于添加、修改、删除 数组可以储存重复元素  2.Collection接口主要有两种子类型集合：List、Set  Collection接口储存一组不唯一，无序的对象 List接口储存一组不唯一，有序（插入顺序）的对象 Set接口储存一组唯一，无序的对象 Map接口储存一组键值对象，提供key和value的映射  二、List 1.ArrayList：本质上就是一个数组 2.动态扩容的实现方式 创建一个更大的空间，把原先所有的元素拷贝过去
-private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity = elementData.length; int newCapacity = oldCapacity &#43; (oldCapacity &gt;&gt; 1); if (newCapacity - minCapacity &lt; 0) newCapacity = minCapacity; if (newCapacity - MAX_ARRAY_SIZE &gt; 0) newCapacity = hugeCapacity(minCapacity); // minCapacity is usually close to size, so this is a win:  elementData = Arrays.">
-    <meta name="generator" content="Hugo 0.88.1" />
+private void grow(int minCapacity) {  // overflow-conscious code  int oldCapacity = elementData.length;  int newCapacity = oldCapacity &#43; (oldCapacity &gt;&gt; 1);  if (newCapacity - minCapacity &lt; 0)  newCapacity = minCapacity;  if (newCapacity - MAX_ARRAY_SIZE &gt; 0)  newCapacity = hugeCapacity(minCapacity);  // minCapacity is usually close to size, so this is a win:  elementData = Arrays.">
+    <meta name="generator" content="Hugo 0.97.3" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -29,7 +29,7 @@ private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity
     
     <meta property="og:title" content="Collection体系原理" />
 <meta property="og:description" content="Collection 体系原理 一、体系简介 1.为什么要有集合？  数组不能实现动态扩容 数组不便于添加、修改、删除 数组可以储存重复元素  2.Collection接口主要有两种子类型集合：List、Set  Collection接口储存一组不唯一，无序的对象 List接口储存一组不唯一，有序（插入顺序）的对象 Set接口储存一组唯一，无序的对象 Map接口储存一组键值对象，提供key和value的映射  二、List 1.ArrayList：本质上就是一个数组 2.动态扩容的实现方式 创建一个更大的空间，把原先所有的元素拷贝过去
-private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity = elementData.length; int newCapacity = oldCapacity &#43; (oldCapacity &gt;&gt; 1); if (newCapacity - minCapacity &lt; 0) newCapacity = minCapacity; if (newCapacity - MAX_ARRAY_SIZE &gt; 0) newCapacity = hugeCapacity(minCapacity); // minCapacity is usually close to size, so this is a win:  elementData = Arrays." />
+private void grow(int minCapacity) {  // overflow-conscious code  int oldCapacity = elementData.length;  int newCapacity = oldCapacity &#43; (oldCapacity &gt;&gt; 1);  if (newCapacity - minCapacity &lt; 0)  newCapacity = minCapacity;  if (newCapacity - MAX_ARRAY_SIZE &gt; 0)  newCapacity = hugeCapacity(minCapacity);  // minCapacity is usually close to size, so this is a win:  elementData = Arrays." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://grumpycitizenbear.top/posts/collection%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-21T21:29:50+08:00" />
@@ -37,13 +37,13 @@ private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity
 
 <meta itemprop="name" content="Collection体系原理">
 <meta itemprop="description" content="Collection 体系原理 一、体系简介 1.为什么要有集合？  数组不能实现动态扩容 数组不便于添加、修改、删除 数组可以储存重复元素  2.Collection接口主要有两种子类型集合：List、Set  Collection接口储存一组不唯一，无序的对象 List接口储存一组不唯一，有序（插入顺序）的对象 Set接口储存一组唯一，无序的对象 Map接口储存一组键值对象，提供key和value的映射  二、List 1.ArrayList：本质上就是一个数组 2.动态扩容的实现方式 创建一个更大的空间，把原先所有的元素拷贝过去
-private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity = elementData.length; int newCapacity = oldCapacity &#43; (oldCapacity &gt;&gt; 1); if (newCapacity - minCapacity &lt; 0) newCapacity = minCapacity; if (newCapacity - MAX_ARRAY_SIZE &gt; 0) newCapacity = hugeCapacity(minCapacity); // minCapacity is usually close to size, so this is a win:  elementData = Arrays."><meta itemprop="datePublished" content="2021-10-21T21:29:50+08:00" />
+private void grow(int minCapacity) {  // overflow-conscious code  int oldCapacity = elementData.length;  int newCapacity = oldCapacity &#43; (oldCapacity &gt;&gt; 1);  if (newCapacity - minCapacity &lt; 0)  newCapacity = minCapacity;  if (newCapacity - MAX_ARRAY_SIZE &gt; 0)  newCapacity = hugeCapacity(minCapacity);  // minCapacity is usually close to size, so this is a win:  elementData = Arrays."><meta itemprop="datePublished" content="2021-10-21T21:29:50+08:00" />
 <meta itemprop="dateModified" content="2021-10-21T21:29:50+08:00" />
 <meta itemprop="wordCount" content="138">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Collection体系原理"/>
 <meta name="twitter:description" content="Collection 体系原理 一、体系简介 1.为什么要有集合？  数组不能实现动态扩容 数组不便于添加、修改、删除 数组可以储存重复元素  2.Collection接口主要有两种子类型集合：List、Set  Collection接口储存一组不唯一，无序的对象 List接口储存一组不唯一，有序（插入顺序）的对象 Set接口储存一组唯一，无序的对象 Map接口储存一组键值对象，提供key和value的映射  二、List 1.ArrayList：本质上就是一个数组 2.动态扩容的实现方式 创建一个更大的空间，把原先所有的元素拷贝过去
-private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity = elementData.length; int newCapacity = oldCapacity &#43; (oldCapacity &gt;&gt; 1); if (newCapacity - minCapacity &lt; 0) newCapacity = minCapacity; if (newCapacity - MAX_ARRAY_SIZE &gt; 0) newCapacity = hugeCapacity(minCapacity); // minCapacity is usually close to size, so this is a win:  elementData = Arrays."/>
+private void grow(int minCapacity) {  // overflow-conscious code  int oldCapacity = elementData.length;  int newCapacity = oldCapacity &#43; (oldCapacity &gt;&gt; 1);  if (newCapacity - minCapacity &lt; 0)  newCapacity = minCapacity;  if (newCapacity - MAX_ARRAY_SIZE &gt; 0)  newCapacity = hugeCapacity(minCapacity);  // minCapacity is usually close to size, so this is a win:  elementData = Arrays."/>
 
 	
   </head>
@@ -188,18 +188,18 @@ private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity
 <h3 id="1arraylist本质上就是一个数组">1.ArrayList：本质上就是一个数组</h3>
 <h3 id="2动态扩容的实现方式">2.动态扩容的实现方式</h3>
 <p>创建一个更大的空间，把原先所有的元素拷贝过去</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">grow</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#75715e">// overflow-conscious code
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> oldCapacity <span style="color:#f92672">=</span> elementData<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">int</span> newCapacity <span style="color:#f92672">=</span> oldCapacity <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>oldCapacity <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>newCapacity <span style="color:#f92672">-</span> minCapacity <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span>
-            newCapacity <span style="color:#f92672">=</span> minCapacity<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>newCapacity <span style="color:#f92672">-</span> MAX_ARRAY_SIZE <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span>
-            newCapacity <span style="color:#f92672">=</span> hugeCapacity<span style="color:#f92672">(</span>minCapacity<span style="color:#f92672">);</span>
-        <span style="color:#75715e">// minCapacity is usually close to size, so this is a win:
-</span><span style="color:#75715e"></span>        elementData <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">copyOf</span><span style="color:#f92672">(</span>elementData<span style="color:#f92672">,</span> newCapacity<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="三set">三、Set</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">grow</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// overflow-conscious code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> oldCapacity <span style="color:#f92672">=</span> elementData<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> newCapacity <span style="color:#f92672">=</span> oldCapacity <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>oldCapacity <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>newCapacity <span style="color:#f92672">-</span> minCapacity <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            newCapacity <span style="color:#f92672">=</span> minCapacity<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>newCapacity <span style="color:#f92672">-</span> MAX_ARRAY_SIZE <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            newCapacity <span style="color:#f92672">=</span> hugeCapacity<span style="color:#f92672">(</span>minCapacity<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// minCapacity is usually close to size, so this is a win:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        elementData <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">copyOf</span><span style="color:#f92672">(</span>elementData<span style="color:#f92672">,</span> newCapacity<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="三set">三、Set</h2>
 <h3 id="1不允许有重复元素的集合">1.不允许有重复元素的集合</h3>
 <ul>
 <li>判断重复的方式：equals方法</li>
@@ -312,7 +312,7 @@ private void grow(int minCapacity) { // overflow-conscious code  int oldCapacity
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://grumpycitizenbear.top/" >
-    &copy;  暴力熊的进阶笔记 2021 
+    &copy;  暴力熊的进阶笔记 2022 
   </a>
     <div>
 

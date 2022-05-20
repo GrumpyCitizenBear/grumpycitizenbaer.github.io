@@ -22,7 +22,7 @@ Java的执行模式是同步/阻塞（block）的    同步、异步：针对客
 运行状态下的线程非常复杂，可以变为阻塞状态、就绪状态和死亡状态
 阻塞状态  如果一个线程执行了sleep（睡眠）、suspend（挂起）等方法，失去所占用资源之后，该线程就从运行状态进入阻塞状态。在睡眠时间已到或获得设备资源后可以重新进入就绪状态。可以分为三种：
  等待阻塞：运行状态中的线程执行 wait() 方法，使线程进入到等待阻塞状态。 同步阻塞：线程在获取 synchronized 同步锁失败(因为同步锁被其他线程占用)。 其他阻塞：通过调用线程的 sleep() 或 join() 发出了 I/O 请求时，线程就会进入到阻塞状态。当sleep() 状态超时，join() 等待线程终止或超时，或者 I/O 处理完毕，线程重新转入就绪状态。  死亡状态  一个运行状态的线程完成任务或者其他终止条件发生时，该线程切换到终止状态。">
-    <meta name="generator" content="Hugo 0.88.1" />
+    <meta name="generator" content="Hugo 0.97.3" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -318,133 +318,133 @@ run()称为线程体，它包含了要执行的这个线程的内容，Run方法
 <ol>
 <li>Runnable</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunnableDemo</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
-   <span style="color:#66d9ef">private</span> Thread t<span style="color:#f92672">;</span>
-   <span style="color:#66d9ef">private</span> String threadName<span style="color:#f92672">;</span>
-   
-   RunnableDemo<span style="color:#f92672">(</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-      threadName <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Creating &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
-   <span style="color:#f92672">}</span>
-   
-   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Running &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
-      <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-         <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 4<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">--)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread: &#34;</span> <span style="color:#f92672">+</span> threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">);</span>
-            <span style="color:#75715e">// 让线程睡眠一会
-</span><span style="color:#75715e"></span>            Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>50<span style="color:#f92672">);</span>
-         <span style="color:#f92672">}</span>
-      <span style="color:#f92672">}</span><span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; interrupted.&#34;</span><span style="color:#f92672">);</span>
-      <span style="color:#f92672">}</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; exiting.&#34;</span><span style="color:#f92672">);</span>
-   <span style="color:#f92672">}</span>
-   
-   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Starting &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
-      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-         t <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> threadName<span style="color:#f92672">);</span>
-         t<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span> <span style="color:#f92672">();</span>
-      <span style="color:#f92672">}</span>
-   <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
- 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestThread</span> <span style="color:#f92672">{</span>
- 
-   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-      RunnableDemo R1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RunnableDemo<span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Thread-1&#34;</span><span style="color:#f92672">);</span>
-      R1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
-      
-      RunnableDemo R2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RunnableDemo<span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Thread-2&#34;</span><span style="color:#f92672">);</span>
-      R2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
-   <span style="color:#f92672">}</span>   
-<span style="color:#f92672">}</span>
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunnableDemo</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> Thread t<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> String threadName<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>   RunnableDemo<span style="color:#f92672">(</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      threadName <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Creating &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Running &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 4<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">--)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread: &#34;</span> <span style="color:#f92672">+</span> threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 让线程睡眠一会
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>50<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span><span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; interrupted.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; exiting.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Starting &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>         t <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> threadName<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>         t<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span> <span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestThread</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      RunnableDemo R1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RunnableDemo<span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Thread-1&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      R1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      RunnableDemo R2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RunnableDemo<span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Thread-2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      R2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>   
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ol start="2">
 <li>继承Thread类本身</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadDemo</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
-   <span style="color:#66d9ef">private</span> Thread t<span style="color:#f92672">;</span>
-   <span style="color:#66d9ef">private</span> String threadName<span style="color:#f92672">;</span>
-   
-   ThreadDemo<span style="color:#f92672">(</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-      threadName <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Creating &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
-   <span style="color:#f92672">}</span>
-   
-   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Running &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
-      <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-         <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 4<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">--)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread: &#34;</span> <span style="color:#f92672">+</span> threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">);</span>
-            <span style="color:#75715e">// 让线程睡眠一会
-</span><span style="color:#75715e"></span>            Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>50<span style="color:#f92672">);</span>
-         <span style="color:#f92672">}</span>
-      <span style="color:#f92672">}</span><span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; interrupted.&#34;</span><span style="color:#f92672">);</span>
-      <span style="color:#f92672">}</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; exiting.&#34;</span><span style="color:#f92672">);</span>
-   <span style="color:#f92672">}</span>
-   
-   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Starting &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
-      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-         t <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> threadName<span style="color:#f92672">);</span>
-         t<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span> <span style="color:#f92672">();</span>
-      <span style="color:#f92672">}</span>
-   <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
- 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestThread</span> <span style="color:#f92672">{</span>
- 
-   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-      ThreadDemo T1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadDemo<span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Thread-1&#34;</span><span style="color:#f92672">);</span>
-      T1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
-      
-      ThreadDemo T2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadDemo<span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Thread-2&#34;</span><span style="color:#f92672">);</span>
-      T2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
-   <span style="color:#f92672">}</span>   
-<span style="color:#f92672">}</span>
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadDemo</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> Thread t<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> String threadName<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>   ThreadDemo<span style="color:#f92672">(</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      threadName <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Creating &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Running &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 4<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">--)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread: &#34;</span> <span style="color:#f92672">+</span> threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">+</span> i<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 让线程睡眠一会
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>50<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span><span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; interrupted.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; exiting.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Starting &#34;</span> <span style="color:#f92672">+</span>  threadName <span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>         t <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> threadName<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>         t<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span> <span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestThread</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      ThreadDemo T1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadDemo<span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Thread-1&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      T1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      ThreadDemo T2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadDemo<span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Thread-2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>      T2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>   
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ol start="3">
 <li>通过Callable和Future创建线程</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CallableThreadTest</span> <span style="color:#66d9ef">implements</span> Callable<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span>  
-    <span style="color:#f92672">{</span>  
-        CallableThreadTest ctt <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CallableThreadTest<span style="color:#f92672">();</span>  
-        FutureTask<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> ft <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FutureTask<span style="color:#f92672">&lt;&gt;(</span>ctt<span style="color:#f92672">);</span>  
-        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>i <span style="color:#f92672">&lt;</span> 100<span style="color:#f92672">;</span>i<span style="color:#f92672">++)</span>  
-        <span style="color:#f92672">{</span>  
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34; 的循环变量i的值&#34;</span><span style="color:#f92672">+</span>i<span style="color:#f92672">);</span>  
-            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>i<span style="color:#f92672">==</span>20<span style="color:#f92672">)</span>  
-            <span style="color:#f92672">{</span>  
-                <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>ft<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;有返回值的线程&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>  
-            <span style="color:#f92672">}</span>  
-        <span style="color:#f92672">}</span>  
-        <span style="color:#66d9ef">try</span>  
-        <span style="color:#f92672">{</span>  
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;子线程的返回值：&#34;</span><span style="color:#f92672">+</span>ft<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">());</span>  
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span>  
-        <span style="color:#f92672">{</span>  
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>  
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ExecutionException e<span style="color:#f92672">)</span>  
-        <span style="color:#f92672">{</span>  
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>  
-        <span style="color:#f92672">}</span>  
-  
-    <span style="color:#f92672">}</span>
-    <span style="color:#a6e22e">@Override</span>  
-    <span style="color:#66d9ef">public</span> Integer <span style="color:#a6e22e">call</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception  
-    <span style="color:#f92672">{</span>  
-        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>  
-        <span style="color:#66d9ef">for</span><span style="color:#f92672">(;</span>i<span style="color:#f92672">&lt;</span>100<span style="color:#f92672">;</span>i<span style="color:#f92672">++)</span>  
-        <span style="color:#f92672">{</span>  
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">+</span>i<span style="color:#f92672">);</span>  
-        <span style="color:#f92672">}</span>  
-        <span style="color:#66d9ef">return</span> i<span style="color:#f92672">;</span>  
-    <span style="color:#f92672">}</span>  
-<span style="color:#f92672">}</span>
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CallableThreadTest</span> <span style="color:#66d9ef">implements</span> Callable<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>        CallableThreadTest ctt <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CallableThreadTest<span style="color:#f92672">();</span>  
+</span></span><span style="display:flex;"><span>        FutureTask<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> ft <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FutureTask<span style="color:#f92672">&lt;&gt;(</span>ctt<span style="color:#f92672">);</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>i <span style="color:#f92672">&lt;</span> 100<span style="color:#f92672">;</span>i<span style="color:#f92672">++)</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34; 的循环变量i的值&#34;</span><span style="color:#f92672">+</span>i<span style="color:#f92672">);</span>  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>i<span style="color:#f92672">==</span>20<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>ft<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;有返回值的线程&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>  
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;子线程的返回值：&#34;</span><span style="color:#f92672">+</span>ft<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">());</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ExecutionException e<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Integer <span style="color:#a6e22e">call</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception  
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(;</span>i<span style="color:#f92672">&lt;</span>100<span style="color:#f92672">;</span>i<span style="color:#f92672">++)</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">+</span>i<span style="color:#f92672">);</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> i<span style="color:#f92672">;</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ol start="4">
 <li>三种方法的不同</li>
 </ol>
 <ul>
@@ -582,7 +582,7 @@ CPU密集型也叫计算密集型，指的是系统的硬盘、内存性能相�
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://grumpycitizenbear.top/" >
-    &copy;  暴力熊的进阶笔记 2021 
+    &copy;  暴力熊的进阶笔记 2022 
   </a>
     <div>
 
