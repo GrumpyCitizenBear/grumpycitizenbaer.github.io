@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DataStructures on 暴力熊的进阶笔记</title>
+    <link>http://grumpycitizenbear.top/datastructure/</link>
+    <description>Recent content in DataStructures on 暴力熊的进阶笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sat, 16 Jul 2022 15:52:18 +0800</lastBuildDate><atom:link href="http://grumpycitizenbear.top/datastructure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>线性表</title>
+      <link>http://grumpycitizenbear.top/datastructure/%E7%BA%BF%E6%80%A7%E8%A1%A8/</link>
+      <pubDate>Sat, 16 Jul 2022 15:52:18 +0800</pubDate>
+      
+      <guid>http://grumpycitizenbear.top/datastructure/%E7%BA%BF%E6%80%A7%E8%A1%A8/</guid>
+      <description>线性表 </description>
+    </item>
+    
+  </channel>
+</rss>
